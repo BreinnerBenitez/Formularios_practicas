@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Formularios IIII</title>
+<style>
+
+body{
+	background-color:rgb(177, 247, 130);
+}
+
+#principal{
+	
+	padding:10px 10px 10px 50px;
+	background : -moz-linear-gradient(top, green,white);
+  background : -webkit-linear-gradient(top, green,white);
+	box-shadow: 10px 10px 5px 0px #999999;
+	border-radius: 10px;
+}
+
+td{
+	padding-bottom:25px;
+}
+h1{
+	text-align:center;
+}
+
+
+#tarjeta, #fecha_tarjeta, #email, #n_tarjeta, #f_tarjeta, #e_mail{
+	visibility:hidden;
+	
+}
+
+label.error{
+
+color: black;
+border: 1px solid black;
+border-radius: 2px;
+background-color: red;
+
+}
+
+</style>
+<script src="../../Jquery/jquery-3.7.1.min.js"></script>
+<script src="../../Jquery/jquery.validate.min.js"></script>
+ 
+
+
+<script>
+
+	$(document).ready(function() {
+		 
+		$("#form_datos").validate({
+
+      			
+	   rules:{
+
+      nombre:"required",
+      apellido:"required",
+
+      f_nacimiento:{
+
+        date:true,
+        required:true
+
+      },
+
+      edad:{
+        number:true,
+        required:true,
+        range:[1,100]
+
+      },
+      mail:"email",
+      p_web:"url" 
+},
+
+  
+    messages:{
+
+        nombre:"Obligatorio",
+        apellido:"Obligatorio",
+        f_nacimiento:{
+
+            required:"Obligatorio",
+            date:"fecha /MM/DD/AA"
+
+        },
+
+        edad:{   
+         
+          number:"pon numero",
+          required:"obligatorio",
+          range:"1-100 años"
+
+
+
+        },
+
+        mail:"ingrese un correo, correcto",
+        p_web:"http://www.sitio.com"
+
+
+    }
+
+
+
+    });
+
+
+	});
+
+</script>
+</head>
+
+<body>
+<h1>Validacion</h1>
+<div id="contenedor">
+<form id="form_datos">
+  <table width="25%" border="0" align="center" id="principal">
+    <tr>
+      <td>Nombre:</td>
+      <td><label for="nombre"></label>
+        <input type="text" name="nombre" id="nombre" ></td>  <!-- requerido  class="required" title="se requiere"-->
+    </tr>
+    <tr>
+      <td>Apellidos:</td>
+      <td><input type="text" name="apellido" id="apellido"  ></td> <!-- requerido class="required" title="se requiere"-->
+    </tr>
+    <tr>
+      <td>Fecha Nacimiento</td>
+      <td><label for="f_nacimiento"></label>
+        <input type="text" name="f_nacimiento" id="f_nacimiento"  ></td> <!-- fechas class="date" title="escriba /MM/DD/AA"-->
+    </tr>
+    <tr>
+      <td>Edad:</td>
+      <td><input name="edad" type="edad" id="edad" size="4"  ></td> <!-- class="number" title="un numero por favor" -->
+    </tr>
+    <tr>
+      <td>Código Postal:</td>
+      <td><label for="c_postal"></label>
+        <input type="text" name="c_postal" id="c_postal"></td>
+    </tr>
+    <tr>
+      <td>Email:</td>
+      <td><label for="mail"></label>
+        <input type="text" name="mail" id="mail" ></td>  <!--class="email" title="correo valido"-->
+    </tr>
+    <tr>
+      <td>Página web:</td>
+      <td><label for="p_web"></label>
+        <input type="text" name="p_web" id="p_web" ></td>  <!-- class="url" title="url porfavor" -->
+    </tr>
+    
+     
+     <tr>
+      <td><p>País:</p></td>
+      <td><p>
+        <label for="pais"></label>
+        <select name="pais" id="pais">
+          <option>Colombia</option>
+          <option>México</option>
+          <option>España</option>
+          <option>Perú</option>
+          <option>Chile</option>
+          <option>Argentina</option>
+        </select>
+     </td>
+    </tr>
+    <tr>
+    <td colspan="2" align="center"><input type="submit" value="Enviar" id="comprobar"></td>
+   
+    </tr>
+  </table>
+  </form>
+</div>
+
+<div id="las_aficiones"></div>
+</body>
+</html>
